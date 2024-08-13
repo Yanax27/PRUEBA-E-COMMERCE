@@ -10,17 +10,17 @@ const port = 3000;
 
 app.use(express.json());
 
-const whitelist = ['http://localhost:5500', 'http://localhost:5173']
-const options ={
-  origin: (origin, callback) =>{
-    if (whitelist.includes(origin)) {
+const whitelist = ['http://localhost:5500', 'http://localhost:5173'];
+const options = {
+  origin: (origin, callback) => {
+    if (!origin || whitelist.includes(origin)) {
       callback(null, true);
-    } else{
-      callback(new Error('No permitido'));
+    } else {
+      callback(new Error('No permitido por CORS'));
     }
-  }
-}
-app.use(cors());
+  },
+};
+app.use(cors(options));
 
 routerApi(app);
 
