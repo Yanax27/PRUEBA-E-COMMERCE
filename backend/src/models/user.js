@@ -24,10 +24,10 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       defaultValue: 'customer'
     },
-    createdAt: {
+    /*createdAt: {
       allowNull: false,
       type: DataTypes.DATE,
       defaultValue: Sequelize.NOW
-    }
+    }*/
   });
 };

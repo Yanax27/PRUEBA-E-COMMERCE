@@ -12,25 +12,17 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    email: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      unique: true,
-    },
     phone: {
       type: DataTypes.STRING,
       allowNull: true,
     },
-    address: {
-      type: DataTypes.STRING,
-      allowNull: true,
-    },
-    createdAt: {
+
+   /* createdAt: {
       allowNull: false,
       type: DataTypes.DATE,
       defaultValue: Sequelize.NOW,
-    },
-    userId: {
+    },*/
+   /* userId: {
       type: DataTypes.UUID,
       allowNull: false,
       references: {
@@ -39,6 +31,6 @@ module.exports = (sequelize) => {
       },
       onUpdate: 'CASCADE',
       onDelete: 'SET NULL'
-    },
+    },*/
   });
 };

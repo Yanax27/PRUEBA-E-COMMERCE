@@ -1,28 +1,28 @@
+const { Sequelize, DataTypes, UUIDV4 } = require('sequelize');
 
-
-module.exports = (sequelize, DataTypes, Sequelize) => {
+module.exports = (sequelize, DataTypes ) => {
   const OrderProduct = sequelize.define('OrderProduct', {
     id: {
-      allowNull: false,
-      autoIncrement: true,
+      type: DataTypes.UUID,
       primaryKey: true,
-      type: DataTypes.UUID
+      defaultValue: UUIDV4,
+      allowNull: false,
     },
-    createdAt: {
+    /*createdAt: {
       allowNull: false,
       type: DataTypes.DATE,
       defaultValue: Sequelize.NOW,
-    },
-    quantity: {
+    },*/
+    amount: {
       type: DataTypes.INTEGER,
       allowNull: false,
       defaultValue: 1,
     },
-    orderId: {
+   /* orderId: {
       type: DataTypes.UUID,
       allowNull: false,
       references: {
-        model: 'Orders',
+        model: 'Order',
         key: 'id',
       },
       onUpdate: 'CASCADE',
@@ -32,12 +32,12 @@ module.exports = (sequelize, DataTypes, Sequelize) => {
       type: DataTypes.UUID,
       allowNull: false,
       references: {
-        model: 'Products',
+        model: 'Product',
         key: 'id',
       },
       onUpdate: 'CASCADE',
       onDelete: 'SET NULL'
-    }
+    }*/
 
   });
 

@@ -12,6 +12,10 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
+    description: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
     price: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -20,12 +24,12 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: true,
     },
-    createdAt: {
+   /* createdAt: {
       allowNull: false,
       type: DataTypes.DATE,
       defaultValue: Sequelize.NOW,
-    },
-    categoryId: {
+    },*/
+   /* categoryId: {
       type: DataTypes.UUID,
       allowNull: false,
       references: {
@@ -34,6 +38,6 @@ module.exports = (sequelize) => {
       },
       onUpdate: 'CASCADE',
       onDelete: 'SET NULL'
-    },
+    },*/
   });
 };
