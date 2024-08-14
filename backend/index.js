@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors')
 const routerApi = require('./src/routes')
-
+const {conn} = require('./src/db')
 
 const {logErrors, errorHandler, boomErrorHandler} = require('./src/middlewares/errorHandler')
 
@@ -29,6 +29,11 @@ app.use(logErrors);
 app.use(boomErrorHandler)
 app.use(errorHandler);
 
-app.listen(port, () => {
-  console.log('Mi port ' + port);
-});
+conn.sync({force:false}).then(()=>{
+  app.listen(port, () => {
+    console.log('Mi port ' + port);
+    console.log("varibales", process.env)
+  });
+})
+
+

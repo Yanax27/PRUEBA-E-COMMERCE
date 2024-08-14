@@ -32,7 +32,7 @@ let capsEntries = entries.map((entry) => [
 ]);
 sequelize.models = Object.fromEntries(capsEntries); //crea un nuevo objeto con los nombres capitalizados
 
-const { Product, Category, User, Order, OrderProduct } = sequelize.models;
+const { Product, Category, Customer, User, Order, OrderProduct } = sequelize.models;
 
 Product.belongsTo(Category); // Cardinalidad: Muchos Productos a Una Categoría (N:1)
 Category.hasMany(Product); // Cardinalidad: Una Categoría a Muchos Productos (1:N)

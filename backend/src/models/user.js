@@ -1,4 +1,4 @@
-const { DataTypes, UUIDV4 } = require('sequelize');
+const { DataTypes, UUIDV4, Sequelize } = require('sequelize');
 
 module.exports = (sequelize) => {
   sequelize.define('User', {
@@ -9,20 +9,25 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
 
-    username: {
+    email:{
       type: DataTypes.STRING,
       allowNull: false,
       unique: true,
-    },
-
-    correo:{
-      type: DataTypes.STRING,
-      allowNull: false,
     },
 
     password: {
       type: DataTypes.STRING,
       allowNull: false,
     },
+    role: {
+      allowNull: false,
+      type: DataTypes.STRING,
+      defaultValue: 'customer'
+    },
+    createdAt: {
+      allowNull: false,
+      type: DataTypes.DATE,
+      defaultValue: Sequelize.NOW
+    }
   });
 };

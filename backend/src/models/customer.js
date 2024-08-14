@@ -1,4 +1,4 @@
-const { DataTypes, UUIDV4 } = require('sequelize');
+const { DataTypes, UUIDV4, Sequelize } = require('sequelize');
 
 module.exports = (sequelize) => {
   sequelize.define('Customer', {
@@ -25,6 +25,11 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: true,
     },
+    createdAt: {
+      allowNull: false,
+      type: DataTypes.DATE,
+      defaultValue: Sequelize.NOW,
+    },
     userId: {
       type: DataTypes.UUID,
       allowNull: false,
@@ -32,6 +37,8 @@ module.exports = (sequelize) => {
         model: 'User',
         key: 'id',
       },
+      onUpdate: 'CASCADE',
+      onDelete: 'SET NULL'
     },
   });
 };
