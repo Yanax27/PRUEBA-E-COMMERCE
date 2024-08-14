@@ -32,13 +32,16 @@ let capsEntries = entries.map((entry) => [
 ]);
 sequelize.models = Object.fromEntries(capsEntries); //crea un nuevo objeto con los nombres capitalizados
 
-const { Product, Category, Customer, User, Order, OrderProduct } = sequelize.models;
+const { Product, Category, User, Customer, Order, OrderProduct } = sequelize.models;
 
-Product.belongsTo(Category); // Cardinalidad: Muchos Productos a Una Categoría (N:1)
-Category.hasMany(Product); // Cardinalidad: Una Categoría a Muchos Productos (1:N)
+User.hasOne(Customer);
+Customer.belongsTo(User); //un User solo tiene 1 Customer  y un customer solo puede tener 1 user(rol)
 
-Order.belongsTo(User); // Cardinalidad: Muchos Pedidos a Un Usuario (N:1)
-User.hasMany(Order); // Cardinalidad: Un Usuario a Muchos Pedidos (1:N)
+Category.hasMany(Product); //
+Product.belongsTo(Category); //  un Category tiene muchos Product
+
+Customer.hasMany(Order); // un customer puede hacer muchas order
+Order.hasMany(Customer); //  una order solo puede ser hecha por un customer
 
 Order.belongsToMany(Product, { through: OrderProduct });
 Product.belongsToMany(Order, { through: OrderProduct }); // Order y Product a través de OrderProduct

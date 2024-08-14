@@ -29,11 +29,14 @@ app.use(logErrors);
 app.use(boomErrorHandler)
 app.use(errorHandler);
 
-conn.sync({force:false}).then(()=>{
-  app.listen(port, () => {
-    console.log('Mi port ' + port);
-    console.log("varibales", process.env)
+conn.sync({ force: false }) // `force: true` recrea las tablas
+  .then(() => {
+    app.listen(port, () => {
+      console.log('Mi port ' + port);
+    });
+  })
+  .catch(error => {
+    console.error('Error durante la sincronización de la base de datos:', error);
   });
-})
 
 

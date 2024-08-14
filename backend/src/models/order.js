@@ -12,20 +12,20 @@ module.exports = (sequelize) => {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
-    createdAt: {
+   /* createdAt: {
       allowNull: false,
       type: DataTypes.DATE,
       defaultValue: Sequelize.NOW,
-    },
-    customerId: {
+    },*/
+   /* customerId: {
       allowNull: false,
       type: DataTypes.UUID,
       references: {
-        model:'Customer' ,
+        model:'Customer',
         key: 'id'
       },
       onUpdate: 'CASCADE',
       onDelete: 'SET NULL'
-    },
+    },*/
   });
 };
